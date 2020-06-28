@@ -12,7 +12,7 @@
 
 |First Name|Last Name|Student ID|
 |---|---|---|
-|first|person|.......|
+|Hasti|Khajeh|9821603|
 |second|person|.......|
 
 
