@@ -47,6 +47,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
         <junit.jupiter.version>5.6.0</junit.jupiter.version>
+        <javafx.version>11.0.2</javafx.version>
     </properties>
 
     <dependencies>
@@ -72,6 +73,23 @@
             <artifactId>pmd-core</artifactId>
             <version>6.24.0</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-swing</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <!--  JavaFX  Webkit support module |(controls + media + graphics)  -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-web</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <!--    JavaFX FXML module | (graphics)    -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${javafx.version}</version>
         </dependency>
     </dependencies>
 </project>
