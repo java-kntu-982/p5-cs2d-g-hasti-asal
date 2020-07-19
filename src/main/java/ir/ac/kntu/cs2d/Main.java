@@ -4,10 +4,14 @@ import ir.ac.kntu.cs2d.map.Map;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main extends Application {
@@ -26,13 +30,89 @@ public class Main extends Application {
         Map map = new Map(width, height);
         map.getCreamWalls().forEach(cream -> root.getChildren().add(cream.getShape()));
 
+        List<Rectangle> bombSite = new ArrayList<>();
 
+        bombSite.add(new Rectangle(height/25, height/3 - height/12 - height/14 - height/16, width/8 + height/100, height/14 - height/100)); //a
+        bombSite.add(new Rectangle(height/25, height/25. + height/2.5 + height/5. + height/15, width/10, height/9)); //b
+
+        bombSite.forEach(rectangle -> rectangle.setFill(Color.RED));
+        bombSite.forEach(rectangle -> root.getChildren().add(rectangle));
+
+        List<Rectangle> rectangles1 = new ArrayList<>();
+        rectangles1.add(new Rectangle(width/4.5, height/120, height/25 - height/120, height/25 - height/120));// bala
+        rectangles1.add(new Rectangle(width/8, height/3 - height/12 - height/14 - height/16, height/55, height/55));// samt a
+        rectangles1.add(new Rectangle(width/9, height/3 - height/12 - height/14 - height/55, width/50, height/55));
+        rectangles1.add(new Rectangle(height/25 + width/16 - height/55, height/3 - height/12 - height/14, height/55, height/55)); //gray
+        rectangles1.add(new Rectangle(height/25, height/3 - height/12 - height/50, height/55, height/35));
+        rectangles1.add(new Rectangle(height/25 + width/16 + height/100, height/3 - height/12 - height/55, height/55, height/55));
+        rectangles1.add(new Rectangle(width - width/50 - width/3.5 - width/6 - width/30 - width/25 + width/80, height/10 - height/15 + height/120, height/75, height/75)); // vasat bala
+        rectangles1.add(new Rectangle(width/6 + width/8 + width/11, height/9.5, height/60, height/75));
+        rectangles1.add(new Rectangle(width - width/50 - width/3.5 - width/6 - width/30, height/10, height/60, height/75));
+        rectangles1.add(new Rectangle(width/6 + width/8 + width/11.5 - width/18 - width/40 - width/120, height/3 - height/12 + height/9 - height/100, height/40, height/40));// samt ct
+        rectangles1.add(new Rectangle(width/6 + width/8 + width/11.5 + width/20, height/3 - height/12 + height/9, height/30, height/30));
+        rectangles1.add(new Rectangle(width/6 + width/8 + width/11.5 - width/18 - height/35, height/3 - height/12 + height/9 - height/50 + height/15, height/35, height/50));
+        rectangles1.add(new Rectangle(width/2 + width/25, height/25 + height/2.5 - height/50, height/40, height/50));
+        rectangles1.add(new Rectangle(width/2 + width/25 + width/50 + width/8, height/25 + height/2.5 - height/40, height/40, height/40)); //samt ct
+        rectangles1.add(new Rectangle(width/2 + width/25 + width/50 + width/5, height/25 + height/2.5 + height/100 + width/55, height/40, height/40));
+        rectangles1.add(new Rectangle(width/4. + width/4. + width/25. + width/50. + width/20. + width/16. - width/30, height/25. + height/2.5 + height/100. + width/55. + height/18, width/30, height/15));
+        rectangles1.add(new Rectangle(width - width/50 - width/30, height/4, width/30, height/15)); //chasbide be divar rast
+        rectangles1.add(new Rectangle(width - width/4, height - height/6, width/10, height/15)); // paen rast
+        rectangles1.add(new Rectangle(width/6. + width/8. + width/11.5 - width/18. - width/100. + width/16.5, height/3. - height/12. + height/9. - height/100. + height/15. + height/4.5, width/50, height/50)); // gray vasat
+        rectangles1.add(new Rectangle(width/6. + width/8. + width/11.5 - width/18. - width/100. + width/8, height/3. - height/12. + height/9. - height/100. + height/15. + height/3.5, width/50, height/50)); // vasat
+        rectangles1.add(new Rectangle(width/6. + width/8. + width/11.5 - width/18. - width/100. + width/18, height/3. - height/12. + height/9. - height/100. + height/15. + height/2.75, width/50, height/50));
+        rectangles1.add(new Rectangle(width/2.5, height/25. + height/2.5 + height/5. + height/15. + height/4. - height/30. - height/50, width/50, height/50));
+        rectangles1.add(new Rectangle(height/25, height - height/4.5, width/50, height/50)); //samt b
+        rectangles1.add(new Rectangle(height/10, height - height/3.75, width/50, height/50));
+        rectangles1.add(new Rectangle(width/6, height - height/6 - height/50, width/50, height/50));
+        rectangles1.add(new Rectangle(width/15, height - height/6 + height/120, width/50, height/50));
+        rectangles1.add(new Rectangle(width/7, height - height/6 + height/120, width/50, height/50));
+        rectangles1.add(new Rectangle(width/7 - width/35, height/25. + height/2.5 + height/5. + height/15. + height/4. - height/50, width/40, height/50));
+        rectangles1.add(new Rectangle(width/15, height/25. + height/2.5 + height/5. + height/15. + height/4. - height/50, width/50, height/50));
+        rectangles1.add(new Rectangle(width/7.5, height/25. + height/2.5 + height/5. + height/15., width/50, height/60)); //gray
+        rectangles1.add(new Rectangle(width/4, height - height/4, width/50, height/50));
+        rectangles1.add(new Rectangle(width/6. + width/8. + width/11.5 - width/18. - width/100. - width/20, height - height/2.5, width/20, height/50));
+//        rectangles.add(new Rectangle(width/6. + width/8. + width/11.5 - width/18. - width/100., height/3. - height/12. + height/9. - height/100. + height/15. + height/10., width/16.5, height/25. + height/2.5 + height/5. + height/15. - height/80. - (height/3. - height/12. + height/9. - height/100. + height/15. + height/10.)));
+
+        rectangles1.forEach(rectangle -> rectangle.setFill(Color.BROWN));
+        rectangles1.forEach(rectangle -> root.getChildren().add(rectangle));
+
+        List<Rectangle> rectangles2 = new ArrayList<>();
+        rectangles2.add(new Rectangle(height/25 + width/16, height/3 - height/12, width/16, height/100)); // samt a
+        rectangles2.add(new Rectangle(height/25 + width/16, height/3 - height/12 - height/14, height/100, height/14));
+        rectangles2.add(new Rectangle(height/25 + width/16, height/3 - height/12 - height/14, width/16 + height/100, height/100));
+        rectangles2.add(new Rectangle(height/25 + width/8 + height/100, height/3 - height/12 - height/14 - height/16, height/100, height/16 + height/100));
+        rectangles2.add(new Rectangle(height/25 + width/8 + height/100 - width/16, height/3 - height/12 - height/14 - height/16 - height/100, width/16 + height/100, height/100));
+        rectangles2.add(new Rectangle(width - width/50 - width/3.5 - width/6 - width/30 - width/20, height/10 - height/50, width/20, height/120)); // vasat bala
+        rectangles2.add(new Rectangle(width - width/50 - width/3.5 - width/6 - width/30 - width/25, height/10 - height/15, width/25, height/120));
+        rectangles2.add(new Rectangle(width/6 + width/8 + width/11.5, height/3 - height/12 + height/9 - height/100, width/9, height/100));// samt ct
+        rectangles2.add(new Rectangle(width/4. + width/4. + width/25. + width/50. + width/20. + width/5., height/25. + height/2.5 - height/8. + height/100. + width/55. - height/8, width/50, height/8));// samt t
+        rectangles2.add(new Rectangle(width/4. + width/4. + width/25. + width/50. + width/20. + width/16 + width/10, height/25. + height/2.5 + height/100. + width/55. + height/4., width/10, height/30));
+        rectangles2.add(new Rectangle(width/6. + width/8. + width/11.5 - width/18. - width/100. + width/16.5, height/3. - height/12. + height/9. - height/100. + height/15. + height/8., width/20, height/40)); // vasat
+        rectangles2.add(new Rectangle(width/6. + width/8. + width/11.5 - width/18. - width/100. + width/16.5 + width/20, height/3. - height/12. + height/9. - height/100. + height/15. + height/8., width/40, height/15));
+        rectangles2.add(new Rectangle(height/25, height - height/6, width/5, height/120));// samt b
+        rectangles2.add(new Rectangle(width/9.5, height/25. + height/2.5 + height/5. + height/15 - height/120, width/7.5 - width/9.5, height/120));
+
+
+
+        rectangles2.forEach(rectangle -> rectangle.setFill(Color.ORANGE));
+        rectangles2.forEach(rectangle -> root.getChildren().add(rectangle));
+
+
+        List<Rectangle> spawn = new ArrayList<>();
+
+        spawn.add(new Rectangle(height/25. + width/8. + width/50., height/3. - height/12., width/4. + width/50. - width/8.,  height/12. + height/50.)); //ct
+        spawn.add(new Rectangle(width/4. + width/4. + width/25. + width/50. + width/20. + width/5. + width/50, height/4 + height/15, width - width/25 - (width/4. + width/4. + width/25. + width/50. + width/20. + width/5.), height/8)); //t
+//        rectangles1.add(new Rectangle(width - width/50 - width/30, height/4, width/30, height/15)); //chasbide be divar rast
+//        rectangles2.add(new Rectangle(width/4. + width/4. + width/25. + width/50. + width/20. + width/5., height/25. + height/2.5 - height/8. + height/100. + width/55. - height/8, width/50, height/8));// samt t
+//        rectangles.add(new Rectangle(height/25. + width/8., height/3. - height/12., height/50., height/12. + height/50.));
+//        rectangles.add(new Rectangle(width/6. + width/8., height/11. + height/20., width/4., height/100.));
+
+        spawn.forEach(rectangle -> root.getChildren().add(rectangle));
 
     }
 }
 
 
-//        List<Rectangle> rectangles = new ArrayList<>();
 //        rectangles.add(new Rectangle(0, 0, width/6., height/25.));
 //        rectangles.add(new Rectangle(0, height/25., height/25., height/2.5));
 //        rectangles.add(new Rectangle(0, height/25. + height/2.5, width/7.5, height/5.));
