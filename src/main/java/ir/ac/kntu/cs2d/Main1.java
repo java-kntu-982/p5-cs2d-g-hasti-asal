@@ -39,9 +39,9 @@ public class Main1 extends Application {
 
         Map map = new Map(width, height);
         map.getCreamWalls().forEach(cream -> root.getChildren().add(cream.getShape()));
-        map.getGrayBoxes().forEach(gray -> root.getChildren().add(gray.getShape()));
-        map.getOrangeWalls().forEach(orange -> root.getChildren().add(orange.getShape()));
-        map.getBrownBoxes().forEach(brown -> root.getChildren().add(brown.getShape()));
+//        map.getGrayBoxes().forEach(gray -> root.getChildren().add(gray.getShape()));
+//        map.getOrangeWalls().forEach(orange -> root.getChildren().add(orange.getShape()));
+//        map.getBrownBoxes().forEach(brown -> root.getChildren().add(brown.getShape()));
 
 
 //        List<Rectangle> bombSite = new ArrayList<>();

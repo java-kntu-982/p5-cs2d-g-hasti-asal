@@ -31,18 +31,18 @@ public class Map {
                     case "cream":
                         creamWalls.add(new Cream(readShape(scanner.nextLine(), width, height)));
                         break;
-                    case "orange":
-                        orangeWalls.add(new Orange(readShape(scanner.nextLine(), width, height)));
-                        break;
-                    case "gray":
-                        grayBoxes.add(new Gray(readShape(scanner.nextLine(), width, height)));
-                        break;
-                    case "brown":
-                        brownBoxes.add(new Brown(readShape(scanner.nextLine(), width, height)));
-                        break;
+//                    case "orange":
+//                        orangeWalls.add(new Orange(readShape(scanner.nextLine(), width, height)));
+//                        break;
+//                    case "gray":
+//                        grayBoxes.add(new Gray(readShape(scanner.nextLine(), width, height)));
+//                        break;
+//                    case "brown":
+//                        brownBoxes.add(new Brown(readShape(scanner.nextLine(), width, height)));
+//                        break;
                     default:
-                        System.out.println("map file got problem");
-                        scanner.nextLine();
+//                        System.out.println("map file got problem");
+//                        System.out.println(scanner.nextLine());
                 }
             }
         } catch (FileNotFoundException e) {
@@ -52,7 +52,6 @@ public class Map {
 
     private Rectangle readShape(String line, int width, int height) {
         String[] strings = line.split(" ");
-        System.out.println(strings.length);
         double[] doubles = new double[8];
         for (int i = 0; i < 8; i++) {
             doubles[i] = Double.parseDouble(strings[i]);
