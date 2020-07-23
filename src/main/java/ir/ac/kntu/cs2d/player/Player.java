@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Player implements Runnable{
+    private String name;
     private double x;
     private double y;
     private double health;
@@ -216,5 +217,13 @@ public abstract class Player implements Runnable{
 
     public void setDirection(int direction) {
         this.direction = direction;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

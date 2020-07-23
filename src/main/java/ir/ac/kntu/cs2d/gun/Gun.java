@@ -51,8 +51,15 @@ public abstract class Gun {
     }
 
     public void shoot() {
-        bullets.get(curShots).shoot();
-        curShots++;
+        if (curShots < magazineCapacity) {
+            bullets.get(curShots).shoot();
+            curShots++;
+        } else {
+            curShots = 0;
+            try {
+                wait((long) (secToReload*1000));
+            } catch (Exception ignored) {}
+        }
     }
 
     public boolean canBuy(Player player) {

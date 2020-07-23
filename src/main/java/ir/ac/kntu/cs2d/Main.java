@@ -1,71 +1,90 @@
 package ir.ac.kntu.cs2d;
 
-import ir.ac.kntu.cs2d.gun.Gun;
-import ir.ac.kntu.cs2d.gun.colt.Glock;
 import ir.ac.kntu.cs2d.map.Map;
 import ir.ac.kntu.cs2d.player.CounterTerrorist;
-import ir.ac.kntu.cs2d.player.Player;
-import javafx.animation.AnimationTimer;
+import ir.ac.kntu.cs2d.player.Terrorist;
 import javafx.application.Application;
-import javafx.scene.Group;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 public class Main extends Application {
+    private int height = 700, width = 800;
+    private Game game;
+
+    private GridPane startMenuPane;
+    private GridPane gunMenuPane;
+
+    private Scene startMenuScene;
+    private Scene gunMenuScene;
+
+    private Media music = new Media(new File("src/main/resources/sounds/522110__setuniman__cheeky-1t41b.wav").toURI().toString());
+    private MediaPlayer mediaPlayer = new MediaPlayer(music);
+
     @Override
-    public void start(Stage stage) throws Exception {
-        Group root = new Group();
-        int height = 700, width = 800;
-        Scene scene = new Scene(root, width, height);
-        stage.setScene(scene);
+    public void start(Stage stage) {
+        initialSetting(stage);
+        stage.setTitle("sc");
         stage.show();
+    }
 
-        Game game = new Game(new Map(width, height));
-        CounterTerrorist player = new CounterTerrorist(40, 100);
-//        Thread thread = new Thread(player);
-//        thread.start();
-        player.setCurGun(new Glock(player));
-        player.getCurGun().getBullets().forEach(bullet -> game.getBullets().add(bullet));
-        game.getCt().add(player);
+    private void initialSetting(Stage stage) {
+        game = new Game(new Map(width, height));
+        mediaPlayer.setAutoPlay(true);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.play();
+        try {
+            startMenu(stage);
+            gunMenu(stage);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        stage.setScene(startMenuScene);
+    }
 
-        game.getCt().forEach(ct -> ct.move(scene, game.getMap()));
-        game.getCt().forEach(ct -> ct.shoot(scene));
+    private void gunMenu(Stage stage) {
+        gunMenuPane = new GridPane();
+        gunMenuScene = new Scene(gunMenuPane, width, height);
+        gunMenuPane.setPadding(new Insets(30, 30, 30, 30));
+        gunMenuPane.setVgap(10);
+        gunMenuPane.setHgap(10);
 
-        game.getCt().forEach(ct -> root.getChildren().add(ct.getShape()));
-        game.getCt().forEach(ct -> root.getChildren().add(ct.getCurGun().getShape()));
-        game.getCt().forEach(ct -> ct.getCurGun().getBullets().forEach(bullet -> root.getChildren().add(bullet.getShape())));
-        game.getT().forEach(t -> root.getChildren().add(t.getShape()));
-        game.getGuns().forEach(gun -> root.getChildren().add(gun.getShape()));
-        game.getMap().getCreamWalls().forEach(cream -> root.getChildren().add(cream.getShape()));
-        game.getMap().getOrangeWalls().forEach(orange -> root.getChildren().add(orange.getShape()));
-        game.getMap().getBrownBoxes().forEach(brown -> root.getChildren().add(brown.getShape()));
-        game.getMap().getGrayBoxes().forEach(gray -> root.getChildren().add(gray.getShape()));
 
-        AnimationTimer animationTimer = new AnimationTimer() {
-            @Override
-            public void handle(long l) {
-                game.getCt().forEach(Player::setXY);
-                game.getT().forEach(Player::setXY);
-                game.getGuns().forEach(Gun::setXY);
-                game.getCt().forEach(counterTerrorist -> counterTerrorist.getCurGun().getBullets().forEach(bullet -> {
-                    bullet.move(game.getMap(), game.getCt(), game.getT());
-                    if (!bullet.isHit() && bullet.isShot() && bullet.didHit(game.getMap(), game.getCt(), game.getT())) {
-//                        bullet.setHit(true);
-                    } else if (!bullet.isShot() || bullet.isHit()) {
-                        bullet.setXY();
-                    }
-                }));
-                game.getT().forEach(terrorist -> terrorist.getCurGun().getBullets().forEach(bullet -> {
-                    bullet.move(game.getMap(), game.getCt(), game.getT());
-                    if (!bullet.isHit() && bullet.isShot() && bullet.didHit(game.getMap(), game.getCt(), game.getT())) {
-                        bullet.setHit(true);
-                    } else if (!bullet.isShot() || bullet.isHit()) {
-                        bullet.setXY();
-                    }
-                }));
-            }
-        };
-        animationTimer.start();
+    }
+
+    private void startMenu(Stage stage) throws FileNotFoundException {
+        Image image = new Image(new FileInputStream("src/main/resources/images/startmenu.jpg"));
+        startMenuPane = new GridPane();
+        startMenuPane.setBackground(new Background(new BackgroundImage(image, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
+        startMenuScene = new Scene(startMenuPane, width, height);
+        startMenuPane.setPadding(new Insets(450, 250, 250, 250));
+        startMenuPane.setVgap(10);
+        startMenuPane.setHgap(10);
+
+        Button ct = new Button("Counter terrorist");
+        ct.setStyle("-fx-pref-width: 200px;");
+        ct.setOnAction(e -> {
+            game.getCt().add(new CounterTerrorist(80, 150));
+            stage.setScene(gunMenuScene);
+        });
+        startMenuPane.add(ct, 0, 0);
+
+        Button t = new Button("Terrorist");
+        t.setStyle("-fx-pref-width: 200px;");
+        t.setOnAction(e -> {
+            game.getT().add(new Terrorist(750, 200));
+            stage.setScene(gunMenuScene);
+        });
+        startMenuPane.add(t, 1, 0);
     }
 
     public static void main(String[] args) {
