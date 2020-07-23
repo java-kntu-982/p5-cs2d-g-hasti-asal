@@ -27,7 +27,7 @@ public class Bullet implements Runnable {
         x = owner.getX();
         y = owner.getY();
         this.owner = owner;
-        shape = new Circle(x, y, 1);
+        shape = new Circle(x, y, 2);
     }
 
     public void setXY() {
@@ -41,16 +41,16 @@ public class Bullet implements Runnable {
         shot = true;
         switch (owner.getDirection()) {
             case 1:
-                dy = -15;
+                dy = -5;
                 break;
             case 2:
-                dy = 15;
+                dy = 5;
                 break;
             case 3:
-                dx = -15;
+                dx = -5;
                 break;
             case 4:
-                dx = 15;
+                dx = 5;
                 break;
             default:
         }

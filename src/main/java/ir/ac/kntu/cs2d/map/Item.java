@@ -21,7 +21,7 @@ public abstract class Item {
         this.shape = shape;
     }
 
-    public boolean BulletCanPass() {
+    public boolean bulletCanPass() {
         return bulletCanPass;
     }
 

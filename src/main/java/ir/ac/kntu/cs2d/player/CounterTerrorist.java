@@ -1,10 +1,8 @@
 package ir.ac.kntu.cs2d.player;
 
-import ir.ac.kntu.cs2d.gun.Gun;
 import javafx.scene.shape.Circle;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CounterTerrorist extends Player {
     public CounterTerrorist(double x, double y) {

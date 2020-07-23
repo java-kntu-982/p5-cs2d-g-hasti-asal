@@ -31,18 +31,18 @@ public class Map {
                     case "cream":
                         creamWalls.add(new Cream(readShape(scanner.nextLine(), width, height)));
                         break;
-//                    case "orange":
-//                        orangeWalls.add(new Orange(readShape(scanner.nextLine(), width, height)));
-//                        break;
-//                    case "gray":
-//                        grayBoxes.add(new Gray(readShape(scanner.nextLine(), width, height)));
-//                        break;
-//                    case "brown":
-//                        brownBoxes.add(new Brown(readShape(scanner.nextLine(), width, height)));
-//                        break;
+                    case "orange":
+                        orangeWalls.add(new Orange(readShape(scanner.nextLine(), width, height)));
+                        break;
+                    case "gray":
+                        grayBoxes.add(new Gray(readShape(scanner.nextLine(), width, height)));
+                        break;
+                    case "brown":
+                        brownBoxes.add(new Brown(readShape(scanner.nextLine(), width, height)));
+                        break;
                     default:
-//                        System.out.println("map file got problem");
-//                        System.out.println(scanner.nextLine());
+                        System.out.println("map file got problem");
+                        System.out.println(scanner.nextLine());
                 }
             }
         } catch (FileNotFoundException e) {
