@@ -53,7 +53,7 @@ public class Game {
 
     public void setGuns(List<Gun> guns) {
         this.guns = guns;
-    }
+    }//
 
     public List<Bullet> getBullets() {
         return bullets;
