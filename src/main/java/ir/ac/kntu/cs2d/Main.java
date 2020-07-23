@@ -1,8 +1,7 @@
 package ir.ac.kntu.cs2d;
 
 import ir.ac.kntu.cs2d.gun.Gun;
-import ir.ac.kntu.cs2d.gun.main.AK47;
-import ir.ac.kntu.cs2d.gun.main.Galil;
+import ir.ac.kntu.cs2d.gun.main.*;
 import ir.ac.kntu.cs2d.map.Map;
 import ir.ac.kntu.cs2d.player.CounterTerrorist;
 import ir.ac.kntu.cs2d.player.Player;
@@ -30,7 +29,7 @@ import java.util.List;
 public class Main extends Application {
     private int height = 700, width = 800;
     private Game game;
-    private static final ArrayList<Player> players = new ArrayList<>();
+    //private static final ArrayList<Player> players = new ArrayList<>();
 
     private GridPane startMenuPane;
     private GridPane terroristGunMenuPane;
@@ -61,6 +60,7 @@ public class Main extends Application {
             startMenu(stage);
             terroristGunMenu(stage);
             Anti_TerroristGunMenu(stage);
+            //game(stage);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -70,47 +70,65 @@ public class Main extends Application {
     private void terroristGunMenu(Stage stage) throws FileNotFoundException {
         terroristGunMenuPane = new GridPane();
         Image gunImage = new Image(new FileInputStream("src/main/resources/images/gun2.jpg"));
-        Image AK47image = new Image(new FileInputStream("src/main/resources/images/AK47.jpg"));
-        Image galilImage = new Image(new FileInputStream("src/main/resources/images/Galil.jpg"));
+        Image AK47image = new Image(new FileInputStream("src/main/resources/images/AK47.png"));
+        Image galilImage = new Image(new FileInputStream("src/main/resources/images/Galil.png"));
+        Image MP5Image = new Image(new FileInputStream("src/main/resources/images/mp5.png"));
+        Image P90Image = new Image(new FileInputStream("src/main/resources/images/p90.png"));
         ImageView imageView1 = new ImageView(AK47image);
-        //imageView1.setX(50);
-        //imageView1.setY(25);
         imageView1.setFitHeight(45);
         imageView1.setFitWidth(50);
-        //imageView1.setPreserveRatio(true);
-        //terroristGunMenuPane.add(imageView1,0,0);
+        terroristGunMenuPane.add(imageView1,1,0);
         ImageView imageView2 = new ImageView(galilImage);
-        //imageView2.setX(100);
-        //imageView2.setY(25);
         imageView2.setFitHeight(45);
         imageView2.setFitWidth(50);
-        //imageView2.setPreserveRatio(true);
-        //terroristGunMenuPane.add(imageView2);
+        terroristGunMenuPane.add(imageView2,1,1);
+        ImageView imageView3 = new ImageView(MP5Image);
+        imageView3.setFitHeight(45);
+        imageView3.setFitWidth(50);
+        terroristGunMenuPane.add(imageView3,1,2);
+        ImageView imageView4 = new ImageView(P90Image);
+        imageView4.setFitHeight(45);
+        imageView4.setFitWidth(50);
+        terroristGunMenuPane.add(imageView4,1,3);
 
         Button AK47 = new Button("AK47");
         AK47.setStyle("-fx-pref-width: 200px;");
         AK47.setOnAction(e -> {
-            List<Gun> guns = null;
-            guns.add(new AK47(game.getT().get(0)));
-            game.setGuns(guns);
+            game.getGuns().add(new AK47(game.getT().get(0)));
+            game.setGuns(game.getGuns());
             stage.setScene(gameScene);
         });
         terroristGunMenuPane.add(AK47, 0, 0);
         Button galil = new Button("Galil");
         galil.setStyle("-fx-pref-width: 200px;");
         galil.setOnAction(e -> {
-            List<Gun> guns = null;
-            guns.add(new Galil(game.getT().get(0)));
-            game.setGuns(guns);
+            game.getGuns().add(new Galil(game.getT().get(0)));
+            game.setGuns(game.getGuns());
             stage.setScene(gameScene);
         });
         terroristGunMenuPane.add(galil, 0, 1);
+        Button MP5 = new Button("MP5");
+        MP5.setStyle("-fx-pref-width: 200px;");
+        MP5.setOnAction(e -> {
+            game.getGuns().add(new MP5(game.getT().get(0)));
+            game.setGuns(game.getGuns());
+            stage.setScene(gameScene);
+        });
+        terroristGunMenuPane.add(MP5, 0, 2);
+        Button P90 = new Button("P90");
+        P90.setStyle("-fx-pref-width: 200px;");
+        P90.setOnAction(e -> {
+            game.getGuns().add(new P90(game.getT().get(0)));
+            game.setGuns(game.getGuns());
+            stage.setScene(gameScene);
+        });
+        terroristGunMenuPane.add(P90, 0, 3);
         Button back = new Button("Back");
         back.setStyle("-fx-pref-width: 200px;");
         back.setOnAction(e -> {
             stage.setScene(startMenuScene);
         });
-        terroristGunMenuPane.add(back,0,2);
+        terroristGunMenuPane.add(back,0,4);
         terroristGunMenuPane.setBackground(new Background(new BackgroundImage(gunImage, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
         terroristGunMenuScene = new Scene(terroristGunMenuPane, width, height);
         terroristGunMenuPane.setPadding(new Insets(30, 30, 30, 30));
@@ -123,44 +141,62 @@ public class Main extends Application {
         Image gunImage = new Image(new FileInputStream("src/main/resources/images/gun2.jpg"));
         Button M4A1 = new Button("M4A1");
         M4A1.setStyle("-fx-pref-width: 200px;");
-        Image M4A1image = new Image(new FileInputStream("src/main/resources/images/M4A1.jpg"));
-        Image famasImage = new Image(new FileInputStream("src/main/resources/images/famas.jpg"));
+        Image M4A1image = new Image(new FileInputStream("src/main/resources/images/M4A1.png"));
+        Image famasImage = new Image(new FileInputStream("src/main/resources/images/famas.png"));
+        Image MP5Image = new Image(new FileInputStream("src/main/resources/images/mp5.png"));
+        Image P90Image = new Image(new FileInputStream("src/main/resources/images/p90.png"));
         ImageView imageView1 = new ImageView(M4A1image);
-        //imageView1.setX(50);
-        //imageView1.setY(25);
         imageView1.setFitHeight(45);
         imageView1.setFitWidth(50);
-        //imageView1.setPreserveRatio(true);
-        //terroristGunMenuPane.add(imageView1,0,0);
+        Anti_TerroristGunMenuPane.add(imageView1,1,0);
         ImageView imageView2 = new ImageView(famasImage);
-        //imageView2.setX(100);
-        //imageView2.setY(25);
         imageView2.setFitHeight(45);
         imageView2.setFitWidth(50);
-        //imageView2.setPreserveRatio(true);
-        //terroristGunMenuPane.add(imageView2);
+        Anti_TerroristGunMenuPane.add(imageView2,1,1);
+        ImageView imageView3 = new ImageView(MP5Image);
+        imageView3.setFitHeight(45);
+        imageView3.setFitWidth(50);
+        Anti_TerroristGunMenuPane.add(imageView3,1,2);
+        ImageView imageView4 = new ImageView(P90Image);
+        imageView4.setFitHeight(45);
+        imageView4.setFitWidth(50);
+        Anti_TerroristGunMenuPane.add(imageView4,1,3);
         M4A1.setOnAction(e -> {
-            List<Gun> guns = null;
-            guns.add(new Galil(game.getT().get(0)));
-            game.setGuns(guns);
+            game.getGuns().add(new M4A1(game.getT().get(0)));
+            game.setGuns(game.getGuns());
             stage.setScene(gameScene);
         });
         Anti_TerroristGunMenuPane.add(M4A1, 0, 0);
         Button famas = new Button("Famas");
         famas.setStyle("-fx-pref-width: 200px;");
         famas.setOnAction(e -> {
-            List<Gun> guns = null;
-            guns.add(new Galil(game.getT().get(0)));
-            game.setGuns(guns);
+            game.getGuns().add(new Famas(game.getT().get(0)));
+            game.setGuns(game.getGuns());
             stage.setScene(gameScene);
         });
         Anti_TerroristGunMenuPane.add(famas, 0, 1);
+        Button MP5 = new Button("MP5");
+        MP5.setStyle("-fx-pref-width: 200px;");
+        MP5.setOnAction(e -> {
+            game.getGuns().add(new MP5(game.getT().get(0)));
+            game.setGuns(game.getGuns());
+            stage.setScene(gameScene);
+        });
+        Anti_TerroristGunMenuPane.add(MP5, 0, 2);
+        Button P90 = new Button("P90");
+        P90.setStyle("-fx-pref-width: 200px;");
+        P90.setOnAction(e -> {
+            game.getGuns().add(new P90(game.getT().get(0)));
+            game.setGuns(game.getGuns());
+            stage.setScene(gameScene);
+        });
+        Anti_TerroristGunMenuPane.add(P90, 0, 3);
         Button back = new Button("Back");
         back.setStyle("-fx-pref-width: 200px;");
         back.setOnAction(e -> {
             stage.setScene(startMenuScene);
         });
-        Anti_TerroristGunMenuPane.add(back,0,2);
+        Anti_TerroristGunMenuPane.add(back,0,4);
         Anti_TerroristGunMenuPane.setBackground(new Background(new BackgroundImage(gunImage, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
         Anti_TerroristGunMenuScene = new Scene(Anti_TerroristGunMenuPane, width, height);
         Anti_TerroristGunMenuPane.setPadding(new Insets(30, 30, 30, 30));
@@ -201,16 +237,14 @@ public class Main extends Application {
         } );
         exit.setStyle("-fx-pref-width: 200px;");
         startMenuPane.add(t, 1, 0);
-        startMenuPane.add(exit,2,0);
+        startMenuPane.add(exit,1,1);
     }
     private void game(Stage stage){
         gamePane =  new GridPane();
-        Button exit = new Button("Exit");
-        exit.setOnAction(e ->{
-            stage.close();
-        } );
-        exit.setStyle("-fx-pref-width: 200px;");
-        gamePane.add(exit,2,0);
+        gameScene = new Scene(gamePane, width, height);
+        gamePane.setPadding(new Insets(450, 250, 250, 250));
+        gamePane.setVgap(10);
+        gamePane.setHgap(10);
         Button back = new Button("Back");
         back.setStyle("-fx-pref-width: 200px;");
         back.setOnAction(e -> {
