@@ -60,7 +60,7 @@ public class Main extends Application {
         try {
             startMenu(stage);
             terroristGunMenu(stage);
-            Anti_TerroristGunMenu(stage);
+            antiTerroristGunMenu(stage);
 //            game(stage);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -71,10 +71,10 @@ public class Main extends Application {
     private void terroristGunMenu(Stage stage) throws FileNotFoundException {
         terroristGunMenuPane = new GridPane();
         Image gunImage = new Image(new FileInputStream("src/main/resources/images/gun2.jpg"));
-        Image ak47Image = new Image(new FileInputStream("src/main/resources/images/AK47.png"));
+        Image ak47Image = new Image(new FileInputStream("src/main/resources/images/ak47.png"));
         Image galilImage = new Image(new FileInputStream("src/main/resources/images/Galil.png"));
+        Image p90Image = new Image(new FileInputStream("src/main/resources/images/p90.png"));
         Image mp5Image = new Image(new FileInputStream("src/main/resources/images/mp5.png"));
-        Image P90Image = new Image(new FileInputStream("src/main/resources/images/p90.png"));
         ImageView imageView1 = new ImageView(ak47Image);
         imageView1.setFitHeight(45);
         imageView1.setFitWidth(50);
@@ -87,21 +87,21 @@ public class Main extends Application {
         imageView3.setFitHeight(45);
         imageView3.setFitWidth(50);
         terroristGunMenuPane.add(imageView3,1,2);
-        ImageView imageView4 = new ImageView(P90Image);
+        ImageView imageView4 = new ImageView(p90Image);
         imageView4.setFitHeight(45);
         imageView4.setFitWidth(50);
         terroristGunMenuPane.add(imageView4,1,3);
 
-        Button AK47 = new Button("AK47");
-        AK47.setStyle("-fx-pref-width: 200px;");
-        AK47.setOnAction(e -> {
+        Button ak47 = new Button("ak47");
+        ak47.setStyle("-fx-pref-width: 200px;");
+        ak47.setOnAction(e -> {
             player.setCurGun(new AK47(player));
             game.getGuns().add(player.getCurGun());
             game.setGuns(game.getGuns());
             game(stage);
             stage.setScene(gameScene);
         });
-        terroristGunMenuPane.add(AK47, 0, 0);
+        terroristGunMenuPane.add(ak47, 0, 0);
         Button galil = new Button("Galil");
         galil.setStyle("-fx-pref-width: 200px;");
         galil.setOnAction(e -> {
@@ -112,26 +112,26 @@ public class Main extends Application {
             stage.setScene(gameScene);
         });
         terroristGunMenuPane.add(galil, 0, 1);
-        Button MP5 = new Button("MP5");
-        MP5.setStyle("-fx-pref-width: 200px;");
-        MP5.setOnAction(e -> {
+        Button mp5 = new Button("MP5");
+        mp5.setStyle("-fx-pref-width: 200px;");
+        mp5.setOnAction(e -> {
             player.setCurGun(new MP5(player));
             game.getGuns().add(player.getCurGun());
             game.setGuns(game.getGuns());
             game(stage);
             stage.setScene(gameScene);
         });
-        terroristGunMenuPane.add(MP5, 0, 2);
-        Button P90 = new Button("P90");
-        P90.setStyle("-fx-pref-width: 200px;");
-        P90.setOnAction(e -> {
+        terroristGunMenuPane.add(mp5, 0, 2);
+        Button p90 = new Button("P90");
+        p90.setStyle("-fx-pref-width: 200px;");
+        p90.setOnAction(e -> {
             player.setCurGun(new P90(player));
             game.getGuns().add(player.getCurGun());
             game.setGuns(game.getGuns());
             game(stage);
             stage.setScene(gameScene);
         });
-        terroristGunMenuPane.add(P90, 0, 3);
+        terroristGunMenuPane.add(p90, 0, 3);
         Button back = new Button("Back");
         back.setStyle("-fx-pref-width: 200px;");
         back.setOnAction(e -> {
@@ -145,16 +145,16 @@ public class Main extends Application {
         terroristGunMenuPane.setHgap(10);
 
     }
-    private void Anti_TerroristGunMenu(Stage stage) throws FileNotFoundException {
+    private void antiTerroristGunMenu(Stage stage) throws FileNotFoundException {
         antiTerroristGunMenuPane = new GridPane();
         Image gunImage = new Image(new FileInputStream("src/main/resources/images/gun2.jpg"));
-        Button M4A1 = new Button("M4A1");
-        M4A1.setStyle("-fx-pref-width: 200px;");
-        Image M4A1image = new Image(new FileInputStream("src/main/resources/images/M4A1.png"));
+        Button m4A1 = new Button("M4A1");
+        m4A1.setStyle("-fx-pref-width: 200px;");
+        Image m4A1image = new Image(new FileInputStream("src/main/resources/images/M4A1.png"));
         Image famasImage = new Image(new FileInputStream("src/main/resources/images/famas.png"));
         Image mp5Image = new Image(new FileInputStream("src/main/resources/images/mp5.png"));
-        Image P90Image = new Image(new FileInputStream("src/main/resources/images/p90.png"));
-        ImageView imageView1 = new ImageView(M4A1image);
+        Image p90Image = new Image(new FileInputStream("src/main/resources/images/p90.png"));
+        ImageView imageView1 = new ImageView(m4A1image);
         imageView1.setFitHeight(45);
         imageView1.setFitWidth(50);
         antiTerroristGunMenuPane.add(imageView1,1,0);
@@ -166,18 +166,18 @@ public class Main extends Application {
         imageView3.setFitHeight(45);
         imageView3.setFitWidth(50);
         antiTerroristGunMenuPane.add(imageView3,1,2);
-        ImageView imageView4 = new ImageView(P90Image);
+        ImageView imageView4 = new ImageView(p90Image);
         imageView4.setFitHeight(45);
         imageView4.setFitWidth(50);
         antiTerroristGunMenuPane.add(imageView4,1,3);
-        M4A1.setOnAction(e -> {
+        m4A1.setOnAction(e -> {
             player.setCurGun(new M4A1(player));
             game.getGuns().add(player.getCurGun());
             game.setGuns(game.getGuns());
             game(stage);
             stage.setScene(gameScene);
         });
-        antiTerroristGunMenuPane.add(M4A1, 0, 0);
+        antiTerroristGunMenuPane.add(m4A1, 0, 0);
         Button famas = new Button("Famas");
         famas.setStyle("-fx-pref-width: 200px;");
         famas.setOnAction(e -> {
@@ -188,26 +188,26 @@ public class Main extends Application {
             stage.setScene(gameScene);
         });
         antiTerroristGunMenuPane.add(famas, 0, 1);
-        Button MP5 = new Button("MP5");
-        MP5.setStyle("-fx-pref-width: 200px;");
-        MP5.setOnAction(e -> {
+        Button mp5 = new Button("MP5");
+        mp5.setStyle("-fx-pref-width: 200px;");
+        mp5.setOnAction(e -> {
             player.setCurGun(new MP5(player));
             game.getGuns().add(player.getCurGun());
             game.setGuns(game.getGuns());
             game(stage);
             stage.setScene(gameScene);
         });
-        antiTerroristGunMenuPane.add(MP5, 0, 2);
-        Button P90 = new Button("P90");
-        P90.setStyle("-fx-pref-width: 200px;");
-        P90.setOnAction(e -> {
+        antiTerroristGunMenuPane.add(mp5, 0, 2);
+        Button p90 = new Button("P90");
+        p90.setStyle("-fx-pref-width: 200px;");
+        p90.setOnAction(e -> {
             player.setCurGun(new P90(player));
             game.getGuns().add(player.getCurGun());
             game.setGuns(game.getGuns());
             game(stage);
             stage.setScene(gameScene);
         });
-        antiTerroristGunMenuPane.add(P90, 0, 3);
+        antiTerroristGunMenuPane.add(p90, 0, 3);
         Button back = new Button("Back");
         back.setStyle("-fx-pref-width: 200px;");
         back.setOnAction(e -> {

@@ -1,10 +1,8 @@
 package ir.ac.kntu.cs2d.gun;
 
 import ir.ac.kntu.cs2d.Bullet;
-import ir.ac.kntu.cs2d.map.Map;
 import ir.ac.kntu.cs2d.player.CounterTerrorist;
 import ir.ac.kntu.cs2d.player.Player;
-import ir.ac.kntu.cs2d.player.Terrorist;
 import javafx.scene.shape.Line;
 
 import java.util.ArrayList;

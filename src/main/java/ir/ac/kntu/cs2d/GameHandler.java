@@ -1,7 +1,5 @@
 package ir.ac.kntu.cs2d;
 
-import ir.ac.kntu.cs2d.client.ClientMain;
-import javafx.animation.AnimationTimer;
 
 import java.net.Socket;
 import java.util.List;
